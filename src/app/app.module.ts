@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FeedComponent } from './feed/feed.component';
@@ -28,6 +32,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     NoopAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     MatIconModule,
     RouterModule.forRoot(
       appRoutes
