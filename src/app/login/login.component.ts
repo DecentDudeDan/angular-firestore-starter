@@ -28,16 +28,9 @@ export class LoginComponent implements OnInit {
       this.afAuth.auth
         .signInWithPopup(provider)
         .then((UserCredential: firebase.auth.UserCredential) => {
-          let doc: AngularFirestoreDocument<User> = this.db.doc(`users/${UserCredential.user.uid}`)
 
-          doc.get().subscribe((user: DocumentSnapshot<User>) => {
-            if(user.get('approved')) {
-              resolve(UserCredential);
-              this.router.navigate(['/feed'])
-            } else {
-              reject();
-            }
-          })
+          resolve(UserCredential);
+          this.router.navigate(['/feed']);
         })
     })
   }

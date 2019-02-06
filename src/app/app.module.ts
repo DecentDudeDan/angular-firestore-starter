@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FeedComponent } from './feed/feed.component';
+import { AuthenticationErrorComponent } from './authentication-error/authentication-error.component';
 
 const appRoutes: Routes = [
   {
@@ -19,7 +21,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'feed',
-    component: FeedComponent
+    component: FeedComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: '**',
+    component: LoginComponent
   }
 ]
 
@@ -27,7 +34,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    FeedComponent
+    FeedComponent,
+    AuthenticationErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
