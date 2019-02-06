@@ -2,9 +2,13 @@
 
 This project was created to be boiler plate for an Angular app with Firestore
 
+## Configure
+
 To use you must configure a Firestore from google and place the API key/credentials into the environment(.prod).ts file.
 
 The login component defaultly has Google auth chosen for the login method so that must also be configured in your Firestore project from google.
+
+The main component has a route that is route guarded by an Authorization service that checks if you are authorized. 
 
 ## Development server
 
