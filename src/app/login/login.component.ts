@@ -28,11 +28,25 @@ export class LoginComponent implements OnInit {
       this.afAuth.auth
         .signInWithPopup(provider)
         .then((UserCredential: firebase.auth.UserCredential) => {
-
+          this.updateUserData(UserCredential.user);
           resolve(UserCredential);
-          this.router.navigate(['/feed']);
         })
     })
   }
 
+  private updateUserData(user) {
+    const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.uid}`);
+
+    userRef.get().subscribe((doc: DocumentSnapshot<User>) => {
+      if (doc && !doc.get('approved')) {
+        const data: User = {
+          uid: user.uid,
+          email: user.email,
+          approved: false
+        }
+        userRef.set(data, { merge: true })
+      }
+      this.router.navigate(['/feed']);
+    })
+  }
 }

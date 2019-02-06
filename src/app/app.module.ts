@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { FeedComponent } from './feed/feed.component';
+import { MainComponent } from './main/main.component';
 import { AuthenticationErrorComponent } from './authentication-error/authentication-error.component';
 
 const appRoutes: Routes = [
@@ -20,8 +20,8 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'feed',
-    component: FeedComponent,
+    path: 'main',
+    component: MainComponent,
     canActivate: [AuthGuardService]
   },
   {
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    FeedComponent,
+    MainComponent,
     AuthenticationErrorComponent
   ],
   imports: [
