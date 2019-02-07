@@ -2,6 +2,14 @@
 
 This project was created to be boiler plate for an Angular app with Firestore
 
+## Includes:
+* Bulma
+* Font-Awesome
+* Angular-Firestore/Firebase
+* Angular Material
+
+##### Note: Firestore/Firebase is used for Authentication. Bulma is used for sytling of login component if you remove either you will need to fix that component.
+
 ## Configure
 
 To use you must configure a Firestore from google and place the API key/credentials into the environment(.prod).ts file.
