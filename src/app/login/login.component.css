@@ -10,6 +10,9 @@ html,body {
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+  .icon-right {
+    margin-right: .5em;
+  }
   input {
     font-weight: 300;
   }
