@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         }
         userRef.set(data, { merge: true })
       }
-      this.router.navigate(['/feed']);
+      this.router.navigate(['/main']);
     })
   }
 }
