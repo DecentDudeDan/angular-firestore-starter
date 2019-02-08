@@ -1,4 +1,5 @@
-import { AuthGuardService } from './auth-guard.service';
+import { LoginResolver } from './services/login.resolver';
+import { AuthGuardService } from './services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +18,10 @@ import { AuthenticationErrorComponent } from './authentication-error/authenticat
 const appRoutes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    resolve: {
+      isLoggedIn: LoginResolver
+    }
   },
   {
     path: 'main',
@@ -26,7 +30,10 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    component: LoginComponent
+    component: LoginComponent,
+    resolve: {
+      isLoggedIn: LoginResolver
+    }
   }
 ]
 
@@ -48,7 +55,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, LoginResolver],
   bootstrap: [AppComponent],
   entryComponents: [
     AuthenticationErrorComponent

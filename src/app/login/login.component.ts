@@ -1,5 +1,6 @@
+import { LoginData } from './../services/login.resolver';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument, DocumentSnapshot } from 'angularfire2/firestore';
@@ -15,7 +16,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     private afAuth: AngularFireAuth,
-    private db: AngularFirestore) { }
+    private db: AngularFirestore,
+    private route: ActivatedRoute) {
+
+    this.route.data.subscribe((data: LoginData) => {
+      if (data.isLoggedIn) {
+        this.router.navigate(['/main']);
+      }
+    })
+  }
 
   ngOnInit() {
   }
