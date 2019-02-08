@@ -1,3 +1,22 @@
-<p>
-  authentication-error works!
-</p>
+<div class="error-content" mat-dialog-content>
+  <div class="hero is-medium">
+      <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Not Allowed
+            </h1>
+            <h2 class="subtitle">
+              You do not have permission to access this data.
+            </h2>
+          </div>
+        </div>
+  </div>
+</div>
+<div mat-dialog-actions class="columns">
+  <div class="column is-offset-6 is-4">
+    <button *ngIf="data.canCancel" class="button is-grey" (click)="onNoClick()">Cancel</button>
+  </div>
+  <div class="column is-2">
+    <button [mat-dialog-close] class="button is-outlined" cdkFocusInitial>Ok</button>
+  </div>
+</div>

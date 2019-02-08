@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-authentication-error',
   templateUrl: './authentication-error.component.html',
   styleUrls: ['./authentication-error.component.css']
 })
-export class AuthenticationErrorComponent implements OnInit {
+export class AuthenticationErrorComponent {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<AuthenticationErrorComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  ngOnInit() {
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
