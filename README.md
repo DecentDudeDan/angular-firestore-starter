@@ -8,7 +8,7 @@ This project was created to be boiler plate for an Angular app with Firestore
 * Angular-Firestore/Firebase
 * Angular Material
 
-##### Note: Firestore/Firebase is used for Authentication. Bulma is used for sytling of login component if you remove either you will need to fix that component.
+##### Note: Firestore/Firebase is used for Authentication. Bulma is used for the styling of the login component; if you remove either you will need to fix that component.
 
 ## Configure
 
