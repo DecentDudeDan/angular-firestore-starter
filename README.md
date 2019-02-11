@@ -8,15 +8,19 @@ This project was created to be boiler plate for an Angular app with Firestore
 * Angular-Firestore/Firebase
 * Angular Material
 
-##### Note: Firestore/Firebase is used for Authentication. Bulma is used for sytling of login component if you remove either you will need to fix that component.
+##### Note: Firestore/Firebase is used for Authentication. Bulma is used for the styling of the login component; if you remove either you will need to fix that component.
 
 ## Configure
 
-To use you must configure a Firestore from google and place the API key/credentials into the environment(.prod).ts file.
+To use you must configure a Firestore project from google and place the API key/credentials into the environment(.prod).ts file.
 
-The login component defaultly has Google auth chosen for the login method so that must also be configured in your Firestore project from google.
+The login component defaultly has Google and Twitter authorization chosen for the login methods so those must also be configured in your Firestore project from google.
 
-The main component has a route that is route guarded by an Authorization service that checks if you are authorized. 
+The main component has a route guard using an authorization service that checks if you logged in. 
+The login component has a check to see if you are already logged in and then redirects to the main component.
+
+To override Bulma variables through the project use the styles.scss global stylesheet.
+###### Note: The full import of Bulma should be left at the bottom of the file to prevent overriding your own variables.
 
 ## Development server
 
