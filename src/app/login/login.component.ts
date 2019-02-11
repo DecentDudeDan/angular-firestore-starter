@@ -10,7 +10,7 @@ import { User } from '../types/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -30,16 +30,20 @@ export class LoginComponent implements OnInit {
   }
 
   doGoogleLogin() {
-    return new Promise<any>((resolve, reject) => {
-      let provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
-      this.afAuth.auth
-        .signInWithPopup(provider)
-        .then((UserCredential: firebase.auth.UserCredential) => {
-          this.updateUserData(UserCredential.user);
-          resolve(UserCredential);
-        })
+    let provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    this.afAuth.auth
+      .signInWithPopup(provider)
+      .then((userCredential: firebase.auth.UserCredential) => {
+        this.updateUserData(userCredential.user);
+      })
+  }
+
+  doTwitterLogin() {
+    let provider = new firebase.auth.TwitterAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider).then((userCrediential: firebase.auth.UserCredential) => {
+      this.updateUserData(userCrediential.user);
     })
   }
 
