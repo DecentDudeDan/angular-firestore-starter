@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { AuthenticationErrorComponent } from './authentication-error/authentication-error.component';
+import { NaviagationComponent } from './naviagation/naviagation.component';
 
 const appRoutes: Routes = [
   {
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     MainComponent,
-    AuthenticationErrorComponent
+    AuthenticationErrorComponent,
+    NaviagationComponent
   ],
   imports: [
     BrowserModule,
