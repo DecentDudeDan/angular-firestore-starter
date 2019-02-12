@@ -37,7 +37,10 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
+    resolve: {
+      isLoggedIn: LoginResolver
+    }
   }
 ]
 

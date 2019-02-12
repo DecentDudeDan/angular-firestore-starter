@@ -27,11 +27,13 @@ export class NaviagationComponent implements OnInit {
 
   toggleNavBarMenu() {
     this.navBarActive = !this.navBarActive;
+    this.cd.detectChanges();
   }
 
   doLogout() {
     this.afAuth.auth.signOut();
     this.setLoginState(false);
+    this.navBarActive = false;
     this.router.navigate(['/login']);
   }
 

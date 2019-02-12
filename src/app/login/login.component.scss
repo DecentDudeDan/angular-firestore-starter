@@ -3,10 +3,7 @@ html,body {
     font-size: 14px;
     font-weight: 300;
   }
-  .hero.is-success {
-    background: #F2F6FA;
-  }
-  .hero .nav, .hero.is-success .nav {
+  .hero .nav, .hero.is-light .nav {
     -webkit-box-shadow: none;
     box-shadow: none;
   }
