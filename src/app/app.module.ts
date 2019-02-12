@@ -31,7 +31,6 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-  {
     path: '',
     component: MainComponent,
     canActivate: [AuthGuardService]
