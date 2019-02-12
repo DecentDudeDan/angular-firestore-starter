@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { AuthenticationErrorComponent } from './authentication-error/authentication-error.component';
 import { NaviagationComponent } from './naviagation/naviagation.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -30,11 +31,14 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+  {
+    path: '',
+    component: MainComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
     path: '**',
-    component: LoginComponent,
-    resolve: {
-      isLoggedIn: LoginResolver
-    }
+    component: PageNotFoundComponent
   }
 ]
 
@@ -44,7 +48,8 @@ const appRoutes: Routes = [
     LoginComponent,
     MainComponent,
     AuthenticationErrorComponent,
-    NaviagationComponent
+    NaviagationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
