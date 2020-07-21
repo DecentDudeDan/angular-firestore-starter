@@ -1,9 +1,9 @@
 import { LoginData } from './../services/login.resolver';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import { AngularFirestore, AngularFirestoreDocument, DocumentSnapshot } from 'angularfire2/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+import { AngularFirestore, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/firestore';
 
 import { User } from '../types/user';
 
@@ -30,19 +30,19 @@ export class LoginComponent implements OnInit {
   }
 
   doGoogleLogin() {
-    let provider = new firebase.auth.GoogleAuthProvider();
+    let provider = new auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
     this.afAuth.auth
       .signInWithPopup(provider)
-      .then((userCredential: firebase.auth.UserCredential) => {
+      .then((userCredential: auth.UserCredential) => {
         this.updateUserData(userCredential.user);
       })
   }
 
   doTwitterLogin() {
-    let provider = new firebase.auth.TwitterAuthProvider();
-    this.afAuth.auth.signInWithPopup(provider).then((userCrediential: firebase.auth.UserCredential) => {
+    let provider = new auth.TwitterAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider).then((userCrediential: auth.UserCredential) => {
       this.updateUserData(userCrediential.user);
     })
   }

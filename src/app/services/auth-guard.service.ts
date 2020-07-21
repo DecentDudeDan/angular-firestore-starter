@@ -1,4 +1,5 @@
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase/app';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,7 +13,7 @@ export class AuthGuardService implements CanActivate {
   
   canActivate(): Observable<boolean> {
     return this.afAuth.authState.pipe(
-      map((user: firebase.User) => {
+      map((user: User) => {
         if (user.uid) {
           return true;
         } else {
